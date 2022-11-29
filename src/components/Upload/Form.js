@@ -4,8 +4,9 @@ import { Add } from "@mui/icons-material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { regular } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { duotone } from "@fortawesome/fontawesome-svg-core/import.macro";
 import "../../styles/ScrollingButton.css";
+import "../../styles/Form.css";
 
 const theme = createTheme({
   palette: {
@@ -52,9 +53,9 @@ const Form = () => {
       {scrolling && (
         <div className={`${scrolling ? "back-top-btn" : "none"}`}>
           <FontAwesomeIcon
-            className="chevron fa-bounce"
+            className="caret fa-bounce"
             size="3x"
-            icon={regular("chevron-up")}
+            icon={duotone("caret-up")}
             onClick={backToTop}
           />
         </div>

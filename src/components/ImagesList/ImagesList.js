@@ -6,6 +6,7 @@ import { Typography, Tooltip, Avatar } from "@mui/material";
 import moment from "moment";
 import ImageMenu from "./ImageMenu";
 import "react-18-image-lightbox/style.css";
+import "../../styles/ImageList.css";
 
 import profileImg from "../../img/sweet-dog.jpg";
 
@@ -22,7 +23,16 @@ export default function ImagesList() {
         }}
       >
         {itemData.map((item, index) => (
-          <ImageListItem className="image-list-item" key={item.img}>
+          <ImageListItem
+            className="image-list-item"
+            key={item.img}
+            sx={{
+              opacity: "1",
+              transition: "opacity 0.3s linear",
+              cursor: "pointer",
+              "&:hover": { opacity: "0.7" },
+            }}
+          >
             <ImageMenu />
             <img
               className="img-card"
@@ -57,10 +67,9 @@ export default function ImagesList() {
               }}
             >
               <Avatar
-                variant="square"
+                variant="round"
                 src={profileImg}
                 sx={{
-                  zIndex: "2000",
                   width: "40px",
                   height: "40px",
                   position: "absolute",

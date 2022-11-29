@@ -1,0 +1,17 @@
+.img-card {
+  cursor: pointer;
+}
+
+.item-list-typography {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  background: rgba(213, 206, 214, 0.3);
+  padding: 5px;
+  border-top-right-radius: 8px;
+  transition: background 0.2s ease-in-out;
+}
+.item-list-typography:hover {
+  background: rgba(144, 49, 170, 0.902);
+}

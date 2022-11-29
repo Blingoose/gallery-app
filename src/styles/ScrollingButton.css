@@ -1,9 +1,6 @@
-.chevron {
-  color: white;
-}
-
-.chevron:hover {
-  color: #9031aa;
+.caret {
+  color: rgb(216, 216, 216);
+  --fa-secondary-opacity: 0.6;
 }
 
 .back-top-btn {
