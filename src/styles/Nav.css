@@ -1,0 +1,25 @@
+.login-icon {
+  color: #9031aa;
+  height: 24px;
+  width: 24px;
+  margin-bottom: 5.1px;
+}
+
+.login-text-button {
+  color: #9031aa;
+  font-size: 22px;
+}
+
+.login-avatar {
+  font-size: 24px;
+}
+
+.login-popup-box {
+  display: flex;
+  left: 20px;
+  position: absolute;
+  top: 40px;
+  align-items: center;
+  text-align: center;
+  /* background-color: purple; */
+}

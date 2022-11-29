@@ -1,0 +1,34 @@
+.chevron {
+  color: white;
+}
+
+.chevron:hover {
+  color: #9031aa;
+}
+
+.back-top-btn {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+}
+
+@media (orientation: landscape) and (min-width: 768px) {
+  .back-top-btn {
+    display: flex;
+    align-items: flex-end;
+    bottom: 0;
+    margin-bottom: 10px;
+  }
+}
+@media (orientation: landscape) and (max-width: 767px) {
+  .back-top-btn {
+    bottom: 0;
+  }
+}
+@media (orientation: portrait) {
+  .back-top-btn {
+    bottom: 0;
+  }
+}

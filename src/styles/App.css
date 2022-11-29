@@ -1,0 +1,43 @@
+.fa-custom-css {
+  height: 100px;
+  width: 100px;
+  color: green;
+  --fa-bounce-start-scale-y: 2;
+}
+
+.main-form {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-list-item {
+  opacity: 0.7;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+.img-list-item:hover {
+  opacity: 1;
+}
+
+.img-card {
+  cursor: pointer;
+}
+
+.item-list-typography {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  background: rgba(213, 206, 214, 0.3);
+  padding: 5px;
+  border-top-right-radius: 8px;
+  transition: background 0.2s ease-in-out;
+}
+.item-list-typography:hover {
+  background: rgba(144, 49, 170, 0.902);
+}
