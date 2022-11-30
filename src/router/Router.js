@@ -7,7 +7,7 @@ import App from "../pages/App";
 const Router = () => {
   return (
     <div>
-      <Header pageApp={<App />} />
+      <Header />
       <Routes>
         <Route path="/gallery" element={<App />} />
         <Route path="/about" element={<About />} />
