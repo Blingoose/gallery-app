@@ -9,8 +9,8 @@ const Router = () => {
     <div>
       <Header pageApp={<App />} />
       <Routes>
-        <Route path="gallery" element={<App />} />
-        <Route path="about" element={<About />} />
+        <Route path="/gallery" element={<App />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );
