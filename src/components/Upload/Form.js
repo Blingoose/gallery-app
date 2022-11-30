@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { duotone } from "@fortawesome/fontawesome-svg-core/import.macro";
-import "../../styles/ScrollingButton.css";
+import "../../styles/fontAwesomeIcons.css";
 import "../../styles/Form.css";
 
 const theme = createTheme({
@@ -14,18 +14,18 @@ const theme = createTheme({
   },
 });
 
-const Form = () => {
+const Form = ({ setFiles }) => {
   const [scrolling, setScrolling] = useState(false);
   const fileRef = useRef();
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const scrollEvent = window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
         setScrolling(true);
       } else setScrolling(false);
     });
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener("scroll", scrollEvent);
     };
   }, []);
 
@@ -37,9 +37,20 @@ const Form = () => {
     fileRef.current.click();
   };
 
+  const handleChange = (event) => {
+    setFiles([...event.target.files]);
+    fileRef.current.value = null;
+  };
+
   return (
     <form className="main-form">
-      <Input type="file" multiple sx={{ display: "none" }} inputRef={fileRef} />
+      <Input
+        type="file"
+        inputProps={{ multiple: true }}
+        sx={{ display: "none" }}
+        inputRef={fileRef}
+        onChange={handleChange}
+      />
       <ThemeProvider theme={theme}>
         <Button
           variant="contained"
@@ -60,7 +71,6 @@ const Form = () => {
           />
         </div>
       )}
-      <div></div>
     </form>
   );
 };

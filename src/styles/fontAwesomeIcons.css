@@ -1,6 +1,6 @@
 .caret {
   color: rgb(216, 216, 216);
-  --fa-secondary-opacity: 0.6;
+  --fa-secondary-opacity: 0.8;
 }
 
 .back-top-btn {
@@ -28,4 +28,10 @@
   .back-top-btn {
     bottom: 0;
   }
+}
+
+.menu-ellipsis-icon {
+  --fa-secondary-color: rgb(255, 255, 255);
+  --fa-secondary-opacity: 1;
+  color: rgb(134, 130, 123);
 }

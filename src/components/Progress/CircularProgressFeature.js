@@ -6,9 +6,11 @@ const CircularProgressFeature = ({ value }) => {
     <Box>
       <CircularProgress
         size={60}
+        prefix="%"
         thickness={5}
         variant="determinate"
         value={value}
+        sx={{ color: "darkorange" }}
       />
       <Box
         sx={{
@@ -28,7 +30,7 @@ const CircularProgressFeature = ({ value }) => {
           color="white"
           fontSize="1rem"
         >
-          {value}
+          {`${Math.round(value)}%`}
         </Typography>
       </Box>
     </Box>

@@ -9,14 +9,37 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { Lock } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import "../styles/Nav.css";
-import profileImg from "../img/sweet-dog.jpg";
+import { useAuth } from "../context/AuthContext";
+import Login from "./userInputs/Login";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 export default function Nav() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const { currentUser, setModal, logout, setAlert } = useAuth();
+
+  const openLogin = () => {
+    setModal({ isOpen: true, title: "login", content: <Login /> });
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      setAlert({
+        isAlert: true,
+        severity: "error",
+        message: error.message,
+        timeout: 6000,
+        location: "main",
+      });
+      console.log(error);
+    }
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,15 +48,19 @@ export default function Nav() {
     setAnchorEl(null);
   };
 
-  const [currentUser, setCurrentUser] = useState(profileImg);
-
   return (
     <React.Fragment>
       <Box className="login-popup-box">
         {!currentUser ? (
           <Button
-            className="login-text-button"
-            startIcon={<Lock className="login-icon" />}
+            onClick={openLogin}
+            sx={{ fontSize: "18px", color: "#9031aa" }}
+            startIcon={
+              <FontAwesomeIcon
+                icon={solid("right-to-bracket")}
+                style={{ color: "#9031aa", fontSize: "25px" }}
+              />
+            }
           >
             Login
           </Button>
@@ -48,7 +75,7 @@ export default function Nav() {
                 },
               },
             }}
-            placement="right"
+            placement="top"
             title="Account settings"
           >
             <IconButton
@@ -62,7 +89,7 @@ export default function Nav() {
               <Avatar
                 sx={{ width: 50, height: 50 }}
                 className="login-avatar"
-                src={profileImg}
+                src={currentUser?.photoURL}
               >
                 {currentUser?.displayName?.charAt(0).toUpperCase() ||
                   currentUser?.email?.charAt(0).toUpperCase()}
@@ -71,6 +98,7 @@ export default function Nav() {
           </Tooltip>
         )}
       </Box>
+      {/* {console.log(currentUser)} */}
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -111,18 +139,24 @@ export default function Nav() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Avatar src={currentUser?.photoURL} /> Profile
         </MenuItem>
         <Divider />
         <MenuItem>
           <ListItemIcon>
-            <Settings sx={{ color: "#9031aa" }} fontSize="small" />
+            <FontAwesomeIcon
+              icon={solid("cog")}
+              style={{ color: "#9031aa", fontSize: "18px" }}
+            />
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
-            <Logout sx={{ color: "#9031aa" }} fontSize="small" />
+            <FontAwesomeIcon
+              icon={solid("power-off")}
+              style={{ color: "#9031aa", fontSize: "18px" }}
+            />
           </ListItemIcon>
           Logout
         </MenuItem>

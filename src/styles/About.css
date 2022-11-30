@@ -1,0 +1,17 @@
+.about {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../public/img/about.jpg") center/cover;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.center {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
