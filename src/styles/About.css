@@ -3,14 +3,28 @@
   height: 100vh;
   background: url("../../public/img/about.jpg") center/cover;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   opacity: 0.8;
+  z-index: -1;
 }
 
-.center {
-  width: 400px;
-  height: 400px;
+.left {
+  font-size: 14px;
+  margin-left: 40px;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 16rem;
+}
+.right {
+  font-size: 14px;
+  margin-right: 40px;
+  z-index: 9;
+  width: 40%;
+  height: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
