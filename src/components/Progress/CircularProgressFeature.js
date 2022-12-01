@@ -5,9 +5,9 @@ const CircularProgressFeature = ({ value }) => {
   return (
     <Box>
       <CircularProgress
-        size={60}
+        size={40}
         prefix="%"
-        thickness={5}
+        thickness={4}
         variant="determinate"
         value={value}
         sx={{ color: "darkorange" }}

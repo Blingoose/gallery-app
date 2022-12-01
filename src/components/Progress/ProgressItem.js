@@ -70,8 +70,8 @@ const ProgressItem = ({ file }) => {
           ) : (
             <CheckCircleOutline
               sx={{
-                width: "80px",
-                height: "80px",
+                width: "40px",
+                height: "40px",
                 color: "limegreen",
               }}
             />
