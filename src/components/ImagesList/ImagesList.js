@@ -55,7 +55,7 @@ export default function ImagesList() {
                   src={`${item?.data?.imgURL}?w=164&h=164&fit=crop&auto=format`}
                   srcSet={`${item?.data?.imgURL}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                   alt={item?.data?.uName || item?.data?.uEmail}
-                  loading="eager"
+                  loading="lazy"
                   onClick={() => {
                     setPhotoIndex(index);
                     setIsOpen(true);

@@ -13,30 +13,15 @@ const useFirestore = (collectionName = "gallery") => {
       orderBy("timestamp", "desc")
     );
 
-    // const observerOBJ={
-    //     next: (snapshot)=>{
-    //         const documents=[]
-    //         snapshot.forEach(doc => {
-    //             documents.push({id:doc.id, data:doc.data()})
-    //             setDocs(documents)
-    //         });
-    //     },
-    //     error: (error)=>{
-    //         alert(error.message)
-    //         console.log(error)
-    //     }
-    // }
-
-    const unsubscribe = onSnapshot(
-      q,
-      (snapshot) => {
+    const observerOBJ = {
+      next: (snapshot) => {
         const documents = [];
         snapshot.forEach((doc) => {
           documents.push({ id: doc.id, data: doc.data() });
+          setDocs(documents);
         });
-        setDocs(documents);
       },
-      (error) => {
+      error: (error) => {
         setAlert({
           isAlert: true,
           severity: "error",
@@ -45,11 +30,34 @@ const useFirestore = (collectionName = "gallery") => {
           location: "main",
         });
         console.log(error);
-      }
+      },
+    };
+
+    const unsubscribe = onSnapshot(
+      q,
+      observerOBJ.next,
+      observerOBJ.error
+      // (snapshot) => {
+      //   const documents = [];
+      //   snapshot.forEach((doc) => {
+      //     documents.push({ id: doc.id, data: doc.data() });
+      //   });
+      //   setDocs(documents);
+      // },
+      // (error) => {
+      //   setAlert({
+      //     isAlert: true,
+      //     severity: "error",
+      //     message: error.message,
+      //     timeout: 6000,
+      //     location: "main",
+      //   });
+      //   console.log(error);
+      // }
     );
 
     return () => unsubscribe();
-  }, [collectionName]);
+  }, [collectionName, setAlert]);
 
   return { docs };
 };
